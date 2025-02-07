@@ -1,3 +1,6 @@
+export interface IQuizQuestionResponse {
+  data: IQuizQuestion[];
+}
 export interface IQuizQuestion {
   id: number;
   question: string;

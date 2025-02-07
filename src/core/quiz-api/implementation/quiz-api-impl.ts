@@ -3,10 +3,12 @@ import { IQuizApiRepository } from "@core/quiz-api/interfaces/quiz-api.repositor
 
 export const quizApiImpl: IQuizApiRepository = {
   async getQuestions() {
-    return await axiosInstanceBasic.get("/questions", {
+    const res = await axiosInstanceBasic.get("/questions", {
       params: {
         limit: 10,
       },
     });
+
+    return res.data;
   },
 };

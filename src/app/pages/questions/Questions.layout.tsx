@@ -1,10 +1,30 @@
+import { ForgeLogo } from "@/app/components/ForgeLogo";
+import { LinesBackground } from "@/app/components/LinesBackground";
+import { useQuizzStore } from "@/app/store/quizz.store";
 import { Outlet } from "react-router";
 
 export const QuestionsLayout = () => {
+  const answers = useQuizzStore((state) => state.answers);
+  const evenQuestion = answers.length % 2 === 0;
+
+  const bgColor = evenQuestion ? "quizz_secondary" : "quizz_tertiary";
+
   return (
-    <div>
-      QuestionsLayout
-      <Outlet />
-    </div>
+    <section className={` w-screen h-screen bg-${bgColor}`}>
+      <LinesBackground
+        className="absolute top-0 left-0 h-screen w-screen "
+        color="#959EA6"
+      />
+
+      <ForgeLogo
+        figureColor="#959EA6"
+        linesColor="#959EA6"
+        className="absolute top-5 right-5 z-20 "
+      />
+
+      <div className="z-10 grid place-items-center py-24 w-[80vw] lg:w-[50vw] mx-auto relative">
+        <Outlet />
+      </div>
+    </section>
   );
 };

@@ -6,5 +6,6 @@ export const useGetQuestions = () => {
     queryKey: ["getQuestions"],
     queryFn: () => quizApiImpl.getQuestions(),
     refetchOnWindowFocus: false,
+    staleTime: Infinity,
   });
 };

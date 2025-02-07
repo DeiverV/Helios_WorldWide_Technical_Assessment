@@ -11,7 +11,7 @@ const createAxiosInstance = (config: AxiosRequestConfig) => {
 const axiosInstanceBasic = createAxiosInstance({
   baseURL: API_BASE_URL,
   headers: {
-    "X-ApiKey": QUIZ_API_TOKEN,
+    "X-Api-Key": QUIZ_API_TOKEN,
   },
 });
 
