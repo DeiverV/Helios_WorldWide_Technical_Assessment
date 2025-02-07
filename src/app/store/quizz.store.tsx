@@ -1,19 +1,32 @@
-import { create } from "zustand";
+import { create, StateCreator } from "zustand";
+import { persist } from "zustand/middleware";
 
 type State = {
   answers: {
     questionId: number;
-    answer: string;
+    answer: number;
   }[];
+  isDarkMode: boolean;
 };
 
 type Actions = {
-  setAnswers: (answers: State["answers"]) => void;
+  saveAnswer: (answers: State["answers"][number]) => void;
+  resetAnswers: VoidFunction;
 };
 
 type Store = State & Actions;
 
-export const useQuizzStore = create<Store>((set) => ({
+const quizzStore: StateCreator<Store> = (set, get) => ({
   answers: [],
-  setAnswers: (answers) => set({ answers }),
-}));
+  isDarkMode: false,
+
+  saveAnswer: (answers) => {
+    const newAnswers = [...get().answers, answers];
+    set({ answers: newAnswers, isDarkMode: newAnswers.length % 2 !== 0 });
+  },
+  resetAnswers: () => set({ answers: [], isDarkMode: false }),
+});
+
+export const useQuizzStore = create<Store>()(
+  persist(quizzStore, { name: "quizz-storage" })
+);

@@ -1,6 +1,8 @@
 import { useQuizzStore } from "@/app/store/quizz.store";
 import { IQuizQuestion } from "@/core/quiz-api/interfaces/quiz-api-question.interface";
 import { QuestionOption } from "./QuestionOption";
+import { useShallow } from "zustand/shallow";
+import { useState } from "react";
 
 interface Props {
   questionOptions?: IQuizQuestion["answers"];
@@ -10,20 +12,32 @@ interface Props {
 const options = ["A", "B", "C", "D"];
 
 export const QuestionForm = ({ questionId, questionOptions }: Props) => {
-  const answers = useQuizzStore((state) => state.answers);
-  const setAnswers = useQuizzStore((state) => state.setAnswers);
+  const { saveAnswer, isDarkMode } = useQuizzStore(
+    useShallow((state) => state)
+  );
 
-  const evenQuestion = true;
-  const buttonColorPrimary = evenQuestion ? "quizz_primary" : "quizz_neutral_1";
+  const [currentAnswerIndex, setCurrentAnswerIndex] = useState<number | null>(
+    null
+  );
+
+  const answerHandler = (index: number) => {
+    setCurrentAnswerIndex(index);
+  };
+
+  const buttonColorPrimary = isDarkMode
+    ? "bg-quizz_primary text-quizz_neutral_1"
+    : "bg-quizz_secondary text-quizz_tertiary";
 
   return (
     <>
-      <div className="grid gap-2 py-10 place-items-center">
+      <div className="grid gap-2 py-10 place-items-center w-[80%]">
         {Object.values(questionOptions ?? {})
           .filter(Boolean)
           .map((answer, index) => (
             <QuestionOption
               key={index}
+              handler={answerHandler.bind({}, index)}
+              isActive={currentAnswerIndex === index}
               answer={answer}
               label={options[index]}
             />
@@ -31,10 +45,16 @@ export const QuestionForm = ({ questionId, questionOptions }: Props) => {
       </div>
 
       <button
-        className={`text-center px-4 py-2 w-fit bg-${buttonColorPrimary} cursor-pointer `}
-        onClick={() =>
-          questionId && setAnswers([...answers, { questionId, answer: "" }])
-        }
+        className={`text-center px-4 py-2 text-xl w-fit ${buttonColorPrimary} cursor-pointer hover:scale-105 duration-100`}
+        disabled={currentAnswerIndex === null || !questionId}
+        onClick={() => {
+          saveAnswer({
+            questionId: questionId ?? 0,
+            answer: currentAnswerIndex ?? 0,
+          });
+          
+          setCurrentAnswerIndex(null);
+        }}
       >
         Next
       </button>

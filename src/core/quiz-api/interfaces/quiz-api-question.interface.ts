@@ -1,6 +1,5 @@
-export interface IQuizQuestionResponse {
-  data: IQuizQuestion[];
-}
+export type IQuizQuestionResponse = IQuizQuestion[];
+
 export interface IQuizQuestion {
   id: number;
   question: string;

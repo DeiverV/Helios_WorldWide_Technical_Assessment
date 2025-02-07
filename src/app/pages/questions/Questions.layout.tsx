@@ -4,13 +4,11 @@ import { useQuizzStore } from "@/app/store/quizz.store";
 import { Outlet } from "react-router";
 
 export const QuestionsLayout = () => {
-  const answers = useQuizzStore((state) => state.answers);
-  const evenQuestion = answers.length % 2 === 0;
-
-  const bgColor = evenQuestion ? "quizz_secondary" : "quizz_tertiary";
+  const isDarkMode = useQuizzStore((state) => state.isDarkMode);
+  const bgColor = isDarkMode ? "quizz_secondary" : "quizz_tertiary";
 
   return (
-    <section className={` w-screen h-screen bg-${bgColor}`}>
+    <section className={`w-screen min-h-screen bg-${bgColor}`}>
       <LinesBackground
         className="absolute top-0 left-0 h-screen w-screen "
         color="#959EA6"
