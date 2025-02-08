@@ -20,7 +20,7 @@ export const QuestionsLayout = () => {
         className="absolute top-5 right-5 z-20 "
       />
 
-      <div className="z-10 grid place-items-center py-24 w-[95vw] md:w-[80vw] lg:w-[50vw] mx-auto relative">
+      <div className="z-10 grid place-items-center py-24 w-[95vw] md:w-[65vw] xl:w-[35vw] mx-auto relative">
         <Outlet />
       </div>
     </section>

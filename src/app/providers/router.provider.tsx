@@ -11,7 +11,7 @@ export const RouterProvider = () => {
   const router = createBrowserRouter([
     {
       index: true,
-      loader: () => redirect(welcomeRoutes?.path ?? "/"),
+      loader: () => redirect("/welcome"),
     },
     welcomeRoutes,
     questionsRoutes,

@@ -11,7 +11,7 @@ interface Props {
 
 const getStyles = (isLightMode: boolean, isActive: boolean) => {
   const buttonBaseStyles =
-    "text-left group p-4 border flex items-center gap-2 w-full cursor-pointer duration-200 break-all";
+    "text-left group p-5 border flex items-center gap-2 w-full cursor-pointer duration-200 break-all";
   const buttonStyles = {
     light: {
       active: "bg-quizz_primary text-quizz_secondary",
@@ -26,7 +26,7 @@ const getStyles = (isLightMode: boolean, isActive: boolean) => {
   };
 
   const baseTagStyles =
-    "w-8 h-8 aspect-square grid place-items-center rounded-full border";
+    "w-9 h-9 aspect-square grid place-items-center rounded-full border ";
   const tagStyles = {
     light: "bg-quizz_primary text-quizz_neutral_1 border-quizz_neutral_1",
     dark: "bg-quizz_secondary text-quizz_tertiary border-quizz_tertiary ",
@@ -55,7 +55,9 @@ export const QuestionOption = ({ answer, label, handler, isActive }: Props) => {
 
   return (
     <button onClick={handler} className={buttonStyles}>
-      <figure className={tagStyles}>{label}</figure>
+      <figure className={tagStyles}>
+        <h5 className="leading-none text-xl">{label}</h5>
+      </figure>
       {answer}
     </button>
   );
