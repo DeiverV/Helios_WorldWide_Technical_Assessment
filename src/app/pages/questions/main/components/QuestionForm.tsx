@@ -1,8 +1,8 @@
-import { useQuizzStore } from "@/app/store/quizz.store";
-import { IQuizQuestion } from "@/core/quiz-api/interfaces/quiz-api-question.interface";
-import { QuestionOption } from "./QuestionOption";
-import { useShallow } from "zustand/shallow";
 import { useState } from "react";
+import { useQuizzStore } from "@store/quizz.store";
+import { IQuizQuestion } from "@core/quiz-api/interfaces/quiz-api-question.interface";
+import { QuestionOption } from "./QuestionOption";
+import { NextButton } from "./NextButton";
 
 interface Props {
   questionOptions?: IQuizQuestion["answers"];
@@ -12,10 +12,7 @@ interface Props {
 const options = ["A", "B", "C", "D"];
 
 export const QuestionForm = ({ questionId, questionOptions }: Props) => {
-  const { saveAnswer, isDarkMode } = useQuizzStore(
-    useShallow((state) => state)
-  );
-
+  const saveAnswer = useQuizzStore((state) => state.saveAnswer);
   const [currentAnswerIndex, setCurrentAnswerIndex] = useState<number | null>(
     null
   );
@@ -24,13 +21,9 @@ export const QuestionForm = ({ questionId, questionOptions }: Props) => {
     setCurrentAnswerIndex(index);
   };
 
-  const buttonColorPrimary = isDarkMode
-    ? "bg-quizz_primary text-quizz_neutral_1"
-    : "bg-quizz_secondary text-quizz_tertiary";
-
   return (
     <>
-      <div className="grid gap-2 py-10 place-items-center w-[80%]">
+      <div className="grid gap-2 py-10 place-items-center w-[90%]">
         {Object.values(questionOptions ?? {})
           .filter(Boolean)
           .map((answer, index) => (
@@ -44,20 +37,17 @@ export const QuestionForm = ({ questionId, questionOptions }: Props) => {
           ))}
       </div>
 
-      <button
-        className={`text-center px-4 py-2 text-xl w-fit ${buttonColorPrimary} cursor-pointer hover:scale-105 duration-100`}
+      <NextButton
         disabled={currentAnswerIndex === null || !questionId}
         onClick={() => {
           saveAnswer({
             questionId: questionId ?? 0,
             answer: currentAnswerIndex ?? 0,
           });
-          
+
           setCurrentAnswerIndex(null);
         }}
-      >
-        Next
-      </button>
+      />
     </>
   );
 };

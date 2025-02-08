@@ -6,7 +6,7 @@ type State = {
     questionId: number;
     answer: number;
   }[];
-  isDarkMode: boolean;
+  isLightMode: boolean;
 };
 
 type Actions = {
@@ -18,13 +18,13 @@ type Store = State & Actions;
 
 const quizzStore: StateCreator<Store> = (set, get) => ({
   answers: [],
-  isDarkMode: false,
+  isLightMode: true,
 
   saveAnswer: (answers) => {
     const newAnswers = [...get().answers, answers];
-    set({ answers: newAnswers, isDarkMode: newAnswers.length % 2 !== 0 });
+    set({ answers: newAnswers, isLightMode: newAnswers.length % 2 === 0 });
   },
-  resetAnswers: () => set({ answers: [], isDarkMode: false }),
+  resetAnswers: () => set({ answers: [], isLightMode: true }),
 });
 
 export const useQuizzStore = create<Store>()(

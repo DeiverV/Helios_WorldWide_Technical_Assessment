@@ -4,8 +4,8 @@ import { useQuizzStore } from "@/app/store/quizz.store";
 import { Outlet } from "react-router";
 
 export const QuestionsLayout = () => {
-  const isDarkMode = useQuizzStore((state) => state.isDarkMode);
-  const bgColor = isDarkMode ? "quizz_secondary" : "quizz_tertiary";
+  const isLightMode = useQuizzStore((state) => state.isLightMode);
+  const bgColor = isLightMode ? "quizz_secondary" : "quizz_tertiary";
 
   return (
     <section className={`w-screen min-h-screen bg-${bgColor}`}>
@@ -20,7 +20,7 @@ export const QuestionsLayout = () => {
         className="absolute top-5 right-5 z-20 "
       />
 
-      <div className="z-10 grid place-items-center py-24 w-[80vw] lg:w-[50vw] mx-auto relative">
+      <div className="z-10 grid place-items-center py-24 w-[95vw] md:w-[80vw] lg:w-[50vw] mx-auto relative">
         <Outlet />
       </div>
     </section>

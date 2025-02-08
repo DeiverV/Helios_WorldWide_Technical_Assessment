@@ -23,6 +23,7 @@ export const WelcomePage = () => {
       <Link
         to={questionsRoutes.path ?? ""}
         className="flex gap-2 items-center justify-center hover:scale-105 duration-200"
+        viewTransition
       >
         <p className="text-2xl">Let's start the quiz</p>
         <Arrow className="size-8 fill-quizz_neutral_1" />
