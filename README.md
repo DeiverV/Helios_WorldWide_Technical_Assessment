@@ -10,6 +10,10 @@ To build up the project you can:
     npm run build
     npm preview
 
+If you want only see the final result you can check:
+
+[Technical Assesment Deploy](https://deiber-verano-technical-assessment.vercel.app/)
+
 So... Let's see how do I solve this problem!
 
 ## Libraries
