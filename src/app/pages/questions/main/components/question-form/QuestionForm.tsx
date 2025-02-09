@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useQuizzStore } from "@store/quizz.store";
 import { IQuizQuestion } from "@core/quiz-api/interfaces/quiz-api-question.interface";
-import { QuestionOption } from "./QuestionOption";
-import { NextButton } from "./NextButton";
+import { QuestionOption } from "../question-option/QuestionOption";
+import { NextButton } from "../next-button/NextButton";
 
 interface Props {
   questionOptions?: IQuizQuestion["answers"];

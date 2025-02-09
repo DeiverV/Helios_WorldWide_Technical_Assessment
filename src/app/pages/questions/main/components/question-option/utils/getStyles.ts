@@ -1,15 +1,6 @@
 import clsx from "clsx";
-import { useMemo } from "react";
-import { useQuizzStore } from "@store/quizz.store";
 
-interface Props {
-  label: string;
-  answer: string;
-  handler: VoidFunction;
-  isActive: boolean;
-}
-
-const getStyles = (isLightMode: boolean, isActive: boolean) => {
+export const getQuestionOptionStyles = (isLightMode: boolean, isActive: boolean) => {
   const buttonBaseStyles =
     "text-left group p-5 border flex items-center gap-2 w-full cursor-pointer duration-200 break-all";
   const buttonStyles = {
@@ -44,21 +35,4 @@ const getStyles = (isLightMode: boolean, isActive: boolean) => {
     ),
     tagStyles: clsx(baseTagStyles, themeStyles.tag),
   };
-};
-
-export const QuestionOption = ({ answer, label, handler, isActive }: Props) => {
-  const isLightMode = useQuizzStore((state) => state.isLightMode);
-  const { buttonStyles, tagStyles } = useMemo(
-    () => getStyles(isLightMode, isActive),
-    [isLightMode, isActive]
-  );
-
-  return (
-    <button onClick={handler} className={buttonStyles}>
-      <figure className={tagStyles}>
-        <h5 className="leading-none text-xl">{label}</h5>
-      </figure>
-      {answer}
-    </button>
-  );
 };

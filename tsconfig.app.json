@@ -30,7 +30,8 @@
       "@core/*": ["./src/core/*"],
       "@pages/*": ["./src/app/pages/*"],
       "@store/*": ["./src/app/store/*"]
-    }
+    },
+    "types": ["vitest", "@testing-library/jest-dom"]
   },
   "include": ["src"]
 }

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useQuizzStore } from "@store/quizz.store";
 import { useGetQuestions } from "./hooks/useGetQuestions";
-import { QuestionForm } from "./components/QuestionForm";
+import { QuestionForm } from "./components/question-form/QuestionForm";
 import { useShallow } from "zustand/shallow";
 import { Spinner } from "@/app/components/Spinner";
 

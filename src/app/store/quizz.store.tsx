@@ -19,7 +19,6 @@ type Store = State & Actions;
 const quizzStore: StateCreator<Store> = (set, get) => ({
   answers: [],
   isLightMode: true,
-
   saveAnswer: (answers) => {
     const newAnswers = [...get().answers, answers];
     set({ answers: newAnswers, isLightMode: newAnswers.length % 2 === 0 });
