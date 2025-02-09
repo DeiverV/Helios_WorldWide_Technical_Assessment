@@ -9,7 +9,7 @@ interface Props {
   questionId?: IQuizQuestion["id"];
 }
 
-const options = ["A", "B", "C", "D"];
+const options = ["A", "B", "C", "D", "E", "F", "G"];
 
 export const QuestionForm = ({ questionId, questionOptions }: Props) => {
   const saveAnswer = useQuizzStore((state) => state.saveAnswer);
