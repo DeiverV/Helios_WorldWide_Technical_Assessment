@@ -1,5 +1,4 @@
 import { Link } from "react-router";
-import { questionsRoutes } from "../../questions/routes/questions.routes";
 import { useResults } from "./hook/useResults";
 
 export const ResultsPage = () => {
@@ -13,7 +12,7 @@ export const ResultsPage = () => {
         </h1>
         <h2 className="text-6xl lg:text-8xl xl:text-9xl">YOU HAVE SCORED</h2>
         <Link
-          to={questionsRoutes.path ?? ""}
+          to={"/welcome"}
           onClick={restartGame}
           className="underline self-end hover:scale-105 duration-200"
           viewTransition

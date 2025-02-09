@@ -9,6 +9,8 @@ export const QuestionsLayout = () => {
 
   return (
     <section className={`w-screen min-h-screen bg-${bgColor}`}>
+      <p className="absolute top-5 left-5 text-[10px]">By: Deiber Verano</p>
+
       <LinesBackground
         className="absolute top-0 left-0 h-screen w-screen "
         color="#959EA6"
