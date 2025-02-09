@@ -10,7 +10,14 @@ To build up the project you can:
     npm run build
     npm preview
 
-If you want only see the final result you can check:
+I made some unit testing in the main app components so you can run them as:
+
+    npm install
+    npm run test
+
+To develop the tests I decided to use **Vitest** because his integration with Vite is easier and faster than Jest.
+
+If you want only see the final result you can check this Vercel link deploy:
 
 [Technical Assesment Deploy](https://deiber-verano-technical-assessment.vercel.app/)
 
@@ -48,7 +55,7 @@ The React App which uses the Core to communicate with external services.
 - **"store" folder**: Contains the unique store in the app. This store handles the theme and the answers of the user in quiz. This store is persisted using the zustand persist middleware to save the data in localstorage.
 - **"providers" folder**: Contains the providers (Tanstack query, React-Router) setup.
 - **"components" folder**: Components used in all app like SVG's tranformed into React Components.
-- **"pages" folder**: Contains the different pages required in the app. Each page contains routes, custom hooks and components.
+- **"pages" folder**: Contains the different pages required in the app. Each page contains routes, custom hooks and components. The internal components has a folder which contains tests, hooks or utilities the component requires.
 
 ## Additional Setups
 
