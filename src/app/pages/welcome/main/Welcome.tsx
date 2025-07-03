@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router";
 import { Arrow } from "@/app/components/Arrow";
-import { ForgeLogo } from "@/app/components/ForgeLogo";
 import { questionsRoutes } from "@pages/questions/routes/questions.routes";
 import { useEffect } from "react";
 import { useQuizzStore } from "@/app/store/quizz.store";
@@ -24,12 +23,7 @@ export const WelcomePage = () => {
           QUIZZLER
         </h1>
         <figure className="flex gap-4">
-          <p>BY:</p>
-          <ForgeLogo
-            figureColor="transparent"
-            linesColor="var(--neutral_1)"
-            textColor="var(--neutral_1)"
-          />
+          <p>BY: Deiber Verano</p>
         </figure>
       </div>
 
